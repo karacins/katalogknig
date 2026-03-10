@@ -1039,6 +1039,14 @@ body {
     overflow: hidden;
   }
 
+  .inner-page .topbar-inner {
+    grid-template-columns: 1fr auto;
+  }
+
+  .inner-page .product-top-note {
+    display: none;
+  }
+
   .tabs {
     display: none;
   }
