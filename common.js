@@ -417,6 +417,15 @@ function setupMobileMenu() {
       return;
     }
 
+    let backdrop = document.querySelector('.mobile-menu-backdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('button');
+      backdrop.type = 'button';
+      backdrop.className = 'mobile-menu-backdrop';
+      backdrop.setAttribute('aria-label', 'Закрити меню');
+      document.body.appendChild(backdrop);
+    }
+
     let toggleButton = topbar.querySelector('[data-mobile-menu-toggle]');
     if (!toggleButton) {
       toggleButton = document.createElement('button');
@@ -431,6 +440,7 @@ function setupMobileMenu() {
 
     const closeMenu = () => {
       topbar.classList.remove('menu-open');
+      document.body.classList.remove('mobile-menu-open');
       toggleButton.setAttribute('aria-expanded', 'false');
       toggleButton.setAttribute('aria-label', 'Відкрити меню');
       const icon = toggleButton.querySelector('.mobile-menu-toggle-icon');
@@ -441,6 +451,7 @@ function setupMobileMenu() {
 
     const openMenu = () => {
       topbar.classList.add('menu-open');
+      document.body.classList.add('mobile-menu-open');
       toggleButton.setAttribute('aria-expanded', 'true');
       toggleButton.setAttribute('aria-label', 'Закрити меню');
       const icon = toggleButton.querySelector('.mobile-menu-toggle-icon');
@@ -458,6 +469,10 @@ function setupMobileMenu() {
       openMenu();
     };
 
+    backdrop.onclick = () => {
+      closeMenu();
+    };
+
     topbarActions.querySelectorAll('a, button').forEach((element) => {
       element.addEventListener('click', () => {
         if (window.innerWidth <= 820) {
@@ -468,6 +483,12 @@ function setupMobileMenu() {
 
     window.addEventListener('resize', () => {
       if (window.innerWidth > 820) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
         closeMenu();
       }
     });
