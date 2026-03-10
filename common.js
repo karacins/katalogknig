@@ -55,10 +55,18 @@ async function fetchJson(url, options = {}) {
   });
 
   const text = await response.text();
-  const payload = text ? JSON.parse(text) : {};
+  let payload = {};
+
+  if (text) {
+    try {
+      payload = JSON.parse(text);
+    } catch {
+      payload = { message: text };
+    }
+  }
 
   if (!response.ok) {
-    const error = new Error(payload.message || 'Помилка сервера.');
+    const error = new Error(payload.details || payload.message || 'Помилка сервера.');
     error.payload = payload;
     throw error;
   }
