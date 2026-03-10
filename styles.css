@@ -34,7 +34,7 @@ body {
 .topbar {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 50;
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
@@ -104,6 +104,10 @@ body {
   gap: 10px;
   align-items: center;
   justify-content: flex-end;
+}
+
+.mobile-primary-links {
+  display: none;
 }
 
 .mobile-menu-toggle {
@@ -1035,6 +1039,10 @@ body {
     overflow: hidden;
   }
 
+  .tabs {
+    display: none;
+  }
+
   .topbar-inner {
     grid-template-columns: 1fr auto;
     align-items: center;
@@ -1064,7 +1072,7 @@ body {
     top: 88px;
     left: 16px;
     right: 16px;
-    z-index: 40;
+    z-index: 70;
     padding: 14px;
     border: 1px solid rgba(230, 235, 255, 0.9);
     border-radius: 22px;
@@ -1087,6 +1095,12 @@ body {
     width: 100%;
   }
 
+  .mobile-primary-links {
+    display: grid;
+    gap: 10px;
+    width: 100%;
+  }
+
   .topbar-actions .topbar-link,
   .topbar-actions .cart-link {
     min-height: 52px;
@@ -1097,7 +1111,7 @@ body {
     display: block;
     position: fixed;
     inset: 0;
-    z-index: 30;
+    z-index: 40;
     border: none;
     padding: 0;
     background: rgba(12, 21, 45, 0.18);

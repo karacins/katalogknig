@@ -434,6 +434,17 @@ function setupMobileMenu() {
       return;
     }
 
+    let primaryLinks = topbarActions.querySelector('.mobile-primary-links');
+    if (!primaryLinks) {
+      primaryLinks = document.createElement('div');
+      primaryLinks.className = 'mobile-primary-links';
+      primaryLinks.innerHTML = `
+        <a class="secondary-btn topbar-link mobile-primary-link" href="index.html?tab=catalog">Каталог книг</a>
+        <a class="secondary-btn topbar-link mobile-primary-link" href="index.html?tab=contacts">Контакти</a>
+      `;
+      topbarActions.insertBefore(primaryLinks, topbarActions.firstChild);
+    }
+
     let backdrop = document.querySelector('.mobile-menu-backdrop');
     if (!backdrop) {
       backdrop = document.createElement('button');
