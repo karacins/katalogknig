@@ -143,6 +143,20 @@ body {
   white-space: nowrap;
 }
 
+.topbar-item-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.topbar-item-label {
+  display: inline-flex;
+  align-items: center;
+}
+
 .header {
   text-align: center;
   padding: 36px 16px 14px;
@@ -1087,8 +1101,7 @@ body {
     z-index: 20;
     border: none;
     padding: 0;
-    background: rgba(12, 21, 45, 0.28);
-    backdrop-filter: blur(4px);
+    background: rgba(12, 21, 45, 0.18);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease;

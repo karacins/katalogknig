@@ -369,10 +369,18 @@ function getBookCoverMarkup(book, extraClass = '') {
   return `<div class="${classes}">${buildCoverImageMarkup(book)}<span>${book.coverTitle}</span></div>`;
 }
 
+function setTopbarActionContent(element, icon, label) {
+  if (!element) {
+    return;
+  }
+
+  element.innerHTML = `<span class="topbar-item-icon" aria-hidden="true">${icon}</span><span class="topbar-item-label">${label}</span>`;
+}
+
 function updateCartLinks() {
   const totalItems = getBookShelfCart().reduce((sum, item) => sum + item.quantity, 0);
   document.querySelectorAll('[data-cart-link]').forEach((element) => {
-    element.textContent = `Заявка (${totalItems})`;
+    setTopbarActionContent(element, '🛒', `Заявка (${totalItems})`);
   });
 }
 
@@ -387,24 +395,33 @@ function renderTopbarAccount() {
     link.hidden = Boolean(currentUser);
     if (!currentUser) {
       link.hidden = false;
-      link.textContent = 'Увійти';
+      setTopbarActionContent(link, '👤', 'Увійти');
       link.setAttribute('href', 'auth.html');
       return;
     }
 
-    link.textContent = currentUser.name;
+    setTopbarActionContent(link, '👤', currentUser.name);
     link.setAttribute('href', 'index.html?tab=orders');
   });
 
   logoutButtons.forEach((button) => {
     button.hidden = !currentUser;
     if (currentUser) {
-      button.textContent = 'Вийти';
+      setTopbarActionContent(button, '↩', 'Вийти');
     }
   });
 
   adminLinks.forEach((link) => {
     link.hidden = !isAdmin;
+    if (!link.hidden) {
+      setTopbarActionContent(link, '🛠️', 'Адмін');
+    }
+  });
+
+  document.querySelectorAll('.topbar a[href="index.html?tab=orders"]').forEach((link) => {
+    if (!link.hasAttribute('data-auth-link')) {
+      setTopbarActionContent(link, '📚', 'Мої оренди');
+    }
   });
 }
 
