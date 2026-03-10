@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вхід до сервісу оренди книг</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Головна">BookShelf</a>
+      <div class="search-box product-top-note">
+        <span>🔐</span>
+        <span>Оренда книг у Тернополі</span>
+      </div>
+      <div class="topbar-actions">
+        <a class="secondary-btn topbar-link" href="index.html?tab=orders">Мої оренди</a>
+        <a class="secondary-btn topbar-link" href="admin.html" data-admin-link hidden>Адмін</a>
+        <a class="secondary-btn topbar-link" href="auth.html" data-auth-link>Увійти</a>
+        <button class="secondary-btn topbar-link" type="button" data-logout-button hidden>Вийти</button>
+        <a class="cart-btn cart-link" href="cart.html" data-cart-link>Кошик (0)</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container auth-page">
+    <section class="auth-layout">
+      <article class="auth-card">
+        <h1>Вхід до акаунта</h1>
+        <form id="login-form" class="checkout-form">
+          <label>Email
+            <input type="email" name="email" placeholder="Ваш email" required>
+          </label>
+          <label>Пароль
+            <input type="password" name="password" placeholder="Пароль" required>
+          </label>
+          <button class="cart-btn" type="submit">Увійти</button>
+        </form>
+        <p id="login-message" class="auth-message" hidden></p>
+      </article>
+
+      <article class="auth-card">
+        <h2>Створення акаунта</h2>
+        <form id="register-form" class="checkout-form">
+          <label>Ім’я
+            <input type="text" name="name" placeholder="Ваше ім’я" required>
+          </label>
+          <label>Email
+            <input type="email" name="email" placeholder="Ваш email" required>
+          </label>
+          <label>Пароль
+            <input type="password" name="password" placeholder="Придумайте пароль" required>
+          </label>
+          <button class="cart-btn" type="submit">Створити акаунт</button>
+        </form>
+        <p id="register-message" class="auth-message" hidden></p>
+      </article>
+    </section>
+
+    <section class="auth-card demo-card">
+      <h2>Статус акаунта</h2>
+      <p>Після входу ви зможете оформлювати оренду книг і відстежувати свої заявки.</p>
+      <div id="auth-status" class="auth-status"></div>
+    </section>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Адмін-панель оренди</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Головна">BookShelf</a>
+      <div class="search-box product-top-note">
+        <span>🛠️</span>
+        <span>Адмін-панель оренди</span>
+      </div>
+      <div class="topbar-actions">
+        <a class="secondary-btn topbar-link" href="index.html?tab=orders">Мої оренди</a>
+        <a class="secondary-btn topbar-link" href="admin.html" data-admin-link hidden>Адмін</a>
+        <a class="secondary-btn topbar-link" href="auth.html" data-auth-link>Увійти</a>
+        <button class="secondary-btn topbar-link" type="button" data-logout-button hidden>Вийти</button>
+        <a class="cart-btn cart-link" href="cart.html" data-cart-link>Заявка (0)</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container admin-page" id="admin-page">
+    <section class="admin-layout">
+      <article class="auth-card">
+        <h1>Додати книгу в оренду</h1>
+        <form id="add-book-form" class="checkout-form">
+          <label>Назва
+            <input type="text" name="title" required>
+          </label>
+          <label>Автор
+            <input type="text" name="author" required>
+          </label>
+          <label>Вартість оренди
+            <input type="number" name="price" min="1" required>
+          </label>
+          <label>Термін оренди, днів
+            <input type="number" name="rentalPeriod" min="1" value="14" required>
+          </label>
+          <label>Застава, грн
+            <input type="number" name="deposit" min="0" value="0" required>
+          </label>
+          <label>Рік/новинка
+            <input type="number" name="year" min="2000" value="2026" required>
+          </label>
+          <label>Коротка мета-лінія
+            <input type="text" name="meta" placeholder="Наприклад: Роман · Доступна в Тернополі" required>
+          </label>
+          <label>Короткий опис
+            <textarea name="description" rows="3" required></textarea>
+          </label>
+          <label>Повний опис
+            <textarea name="longDescription" rows="5" required></textarea>
+          </label>
+          <label>Видавництво
+            <input type="text" name="publisher" required>
+          </label>
+          <label>Мова
+            <input type="text" name="language" value="Українська" required>
+          </label>
+          <label>Сторінок
+            <input type="number" name="pages" min="1" required>
+          </label>
+          <label>Палітурка
+            <input type="text" name="binding" required>
+          </label>
+          <label>Точка видачі в Тернополі
+            <input type="text" name="pickupLocation" placeholder="Наприклад: Центр, Театральний майдан" required>
+          </label>
+          <label>Шлях до картинки або URL
+            <input type="text" name="image" placeholder="covers/my-book.jpg або https://...">
+          </label>
+          <label>Або завантажити картинку з комп’ютера
+            <input type="file" name="imageFile" id="image-file-input" accept="image/png,image/jpeg,image/webp,image/gif">
+          </label>
+          <p class="form-hint">Для демо-версії краще завантажувати зображення до 1.5 МБ, бо вони зберігаються в браузері.</p>
+          <div id="image-preview" class="image-preview" hidden>
+            <img id="image-preview-tag" class="image-preview-tag" alt="Попередній перегляд обкладинки">
+          </div>
+          <label>Стиль обкладинки
+            <select name="coverClass" required>
+              <option value="cover-1">Стиль 1</option>
+              <option value="cover-2">Стиль 2</option>
+              <option value="cover-3">Стиль 3</option>
+              <option value="cover-4">Стиль 4</option>
+              <option value="cover-5">Стиль 5</option>
+              <option value="cover-6">Стиль 6</option>
+            </select>
+          </label>
+          <button class="cart-btn" type="submit">Додати книгу в оренду</button>
+        </form>
+        <p id="admin-book-message" class="auth-message" hidden></p>
+      </article>
+
+      <article class="auth-card">
+        <h2>Усі заявки на оренду</h2>
+        <div id="admin-orders-list" class="orders-list"></div>
+      </article>
+    </section>
+
+    <section class="auth-card">
+      <h2>Книги, додані в оренду</h2>
+      <div id="admin-books-list" class="orders-list"></div>
+    </section>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="books.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Заявка на оренду</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Головна">BookShelf</a>
+      <div class="search-box product-top-note">
+        <span>🛒</span>
+        <span>Ваша заявка на оренду</span>
+      </div>
+      <div class="topbar-actions">
+        <a class="secondary-btn topbar-link" href="index.html?tab=orders">Мої оренди</a>
+        <a class="secondary-btn topbar-link" href="admin.html" data-admin-link hidden>Адмін</a>
+        <a class="secondary-btn topbar-link" href="auth.html" data-auth-link>Увійти</a>
+        <button class="secondary-btn topbar-link" type="button" data-logout-button hidden>Вийти</button>
+        <a class="cart-btn cart-link" href="cart.html" data-cart-link>Заявка (0)</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container cart-page">
+    <section class="cart-layout">
+      <div>
+        <h1>Заявка на оренду</h1>
+        <div id="cart-items" class="cart-items"></div>
+      </div>
+
+      <aside class="cart-summary">
+        <h2>Оформлення оренди</h2>
+        <p>Кількість книг: <strong id="cart-count">0</strong></p>
+        <p>Вартість оренди: <strong id="cart-total">0 грн</strong></p>
+        <button class="secondary-btn" id="clear-cart-btn" type="button">Очистити заявку</button>
+        <form id="checkout-form" class="checkout-form">
+          <label>
+            Ім’я
+            <input id="customer-name" name="name" type="text" placeholder="Ваше ім’я" required>
+          </label>
+          <label>
+            Телефон
+            <input id="customer-phone" name="phone" type="tel" placeholder="+380..." required>
+          </label>
+          <label>
+            Район або місце зустрічі в Тернополі
+            <textarea id="customer-address" name="address" placeholder="Наприклад: Центр, Дружба або конкретна точка" rows="4" required></textarea>
+          </label>
+          <label>
+            Бажана дата отримання
+            <input id="pickup-date" name="pickupDate" type="date" required>
+          </label>
+          <button class="cart-btn" id="checkout-btn" type="submit">Підтвердити заявку</button>
+        </form>
+        <p id="checkout-message" class="checkout-message" hidden></p>
+        <p class="checkout-note">Після підтвердження ми узгодимо місце видачі книги в Тернополі: +380 (67) 123-45-67</p>
+      </aside>
+    </section>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="books.js"></script>
+  <script src="cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#612c25"/>
+      <stop offset="100%" stop-color="#d38069"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="900" fill="url(#bg)"/>
+  <rect x="36" y="36" width="528" height="828" rx="18" fill="none" stroke="#ffffff" stroke-opacity="0.35"/>
+  <text x="70" y="130" font-size="36" fill="#ffe7df" font-family="Segoe UI, Arial">МИХАЙЛО БУЛГАКОВ</text>
+  <text x="70" y="220" font-size="62" font-weight="700" fill="#ffffff" font-family="Segoe UI, Arial">МАЙСТЕР І</text>
+  <text x="70" y="295" font-size="62" font-weight="700" fill="#ffffff" font-family="Segoe UI, Arial">МАРГАРИТА</text>
+  <text x="70" y="820" font-size="30" fill="#ffe7df" font-family="Segoe UI, Arial">КЛАСИКА ХХ СТОЛІТТЯ</text>
+</svg>

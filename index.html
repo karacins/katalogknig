@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оренда книг у Тернополі</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Головна">BookShelf</a>
+      <label class="search-box" aria-label="Пошук книги">
+        <span>🔎</span>
+        <input id="search-input" type="text" placeholder="Пошук книги або автора" />
+      </label>
+      <div class="topbar-actions">
+        <a class="secondary-btn topbar-link" href="index.html?tab=orders">Мої оренди</a>
+        <a class="secondary-btn topbar-link" href="admin.html" data-admin-link hidden>Адмін</a>
+        <a class="secondary-btn topbar-link" href="auth.html" data-auth-link>Увійти</a>
+        <button class="secondary-btn topbar-link" type="button" data-logout-button hidden>Вийти</button>
+        <a class="cart-btn cart-link" href="cart.html" data-cart-link>Кошик (0)</a>
+      </div>
+    </div>
+  </header>
+
+  <header class="header">
+    <p class="eyebrow">Оренда книг</p>
+    <h1>Оренда книг у Тернополі</h1>
+    <p>Обирай книгу, переглядай умови оренди та оформлюй заявку на отримання в Тернополі.</p>
+    <div class="hero-stats">
+      <div><strong>1200+</strong><span>книг для оренди</span></div>
+      <div><strong>24h</strong><span>підтвердження заявки</span></div>
+      <div><strong>Тернопіль</strong><span>видача по місту</span></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="tabs" aria-label="Вкладки каталогу">
+      <button class="tab-button active" data-tab="catalog" type="button">Каталог книг</button>
+      <button class="tab-button" data-tab="contacts" type="button">Контакти</button>
+    </nav>
+
+    <section id="catalog" class="tab-content active" aria-label="Каталог книг">
+      <div class="catalog-toolbar">
+        <div class="catalog-toolbar-stats">
+          <p>Показано: <strong class="count-label">6 книг у каталозі</strong></p>
+          <p>Доступно зараз: <strong class="available-count-label">6 книг</strong></p>
+        </div>
+        <div class="chips">
+          <button class="chip active" type="button" data-sort="popular">Популярні в оренді</button>
+          <button class="chip" type="button" data-sort="cheap">Від дешевших</button>
+          <button class="chip" type="button" data-sort="new">Нові надходження</button>
+          <button class="chip chip-toggle" type="button" data-filter="available" aria-pressed="false">Тільки доступні</button>
+        </div>
+      </div>
+
+      <div class="books-grid" data-category="catalog"></div>
+    </section>
+
+    <section id="contacts" class="tab-content" aria-label="Контакти">
+      <div class="contact-card">
+        <h2>Оренда книг у Тернополі</h2>
+        <p><strong>Телефон:</strong> +380 (67) 123-45-67</p>
+        <p><strong>Email:</strong> rent.books@example.com</p>
+        <p><strong>Місто:</strong> Тернопіль</p>
+        <p><strong>Видача:</strong> центр міста або погоджений район</p>
+      </div>
+    </section>
+
+    <section id="orders" class="tab-content" aria-label="Мої оренди">
+      <div class="contact-card orders-panel">
+        <h2>Мої оренди</h2>
+        <p class="orders-subtitle">Тут зберігаються всі ваші заявки на оренду книг у Тернополі.</p>
+        <div id="orders-list" class="orders-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="books.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

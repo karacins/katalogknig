@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2b3147"/>
+      <stop offset="100%" stop-color="#7a86aa"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="900" fill="url(#bg)"/>
+  <rect x="36" y="36" width="528" height="828" rx="18" fill="none" stroke="#ffffff" stroke-opacity="0.35"/>
+  <text x="70" y="130" font-size="42" fill="#e2e7f7" font-family="Segoe UI, Arial">ДЖОРДЖ ОРВЕЛЛ</text>
+  <text x="70" y="300" font-size="180" font-weight="700" fill="#ffffff" font-family="Segoe UI, Arial">1984</text>
+  <text x="70" y="820" font-size="30" fill="#e2e7f7" font-family="Segoe UI, Arial">АНТИУТОПІЯ</text>
+</svg>

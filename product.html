@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оренда книги</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Головна">BookShelf</a>
+      <div class="search-box product-top-note">
+        <span>📚</span>
+        <span>Оренда книги у Тернополі</span>
+      </div>
+      <div class="topbar-actions">
+        <a class="secondary-btn topbar-link" href="index.html?tab=orders">Мої оренди</a>
+        <a class="secondary-btn topbar-link" href="admin.html" data-admin-link hidden>Адмін</a>
+        <a class="secondary-btn topbar-link" href="auth.html" data-auth-link>Увійти</a>
+        <button class="secondary-btn topbar-link" type="button" data-logout-button hidden>Вийти</button>
+        <a class="cart-btn cart-link" href="cart.html" data-cart-link>Кошик (0)</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container product-page" id="product-page">
+    <section class="product-layout" id="product-layout">
+      <div class="product-cover-wrap">
+        <div class="book-cover product-cover" id="product-cover"></div>
+      </div>
+
+      <div class="product-info">
+        <p class="eyebrow" id="product-condition"></p>
+        <h1 id="product-title"></h1>
+        <p class="product-author" id="product-author"></p>
+        <p class="product-price" id="product-price"></p>
+        <p class="product-short" id="product-short"></p>
+
+        <div class="product-actions">
+          <button class="cart-btn" id="add-to-cart" type="button">Додати в заявку</button>
+          <button class="secondary-btn" id="buy-now" type="button">Оформити оренду</button>
+        </div>
+
+        <div class="product-meta-grid" id="product-meta-grid"></div>
+      </div>
+    </section>
+
+    <section class="product-description-card">
+      <h2>Опис та умови оренди</h2>
+      <p id="product-long-description"></p>
+    </section>
+
+    <section class="product-description-card availability-card">
+      <h2>Доступність книги</h2>
+      <div id="availability-summary"></div>
+      <div id="availability-list"></div>
+    </section>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="books.js"></script>
+  <script src="product.js"></script>
+</body>
+</html>
