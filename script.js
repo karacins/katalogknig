@@ -3,6 +3,7 @@ const tabContents = document.querySelectorAll('.tab-content');
 const searchInput = document.getElementById('search-input');
 const catalogSections = document.querySelectorAll('#catalog');
 const ordersList = document.getElementById('orders-list');
+const homeHero = document.querySelector('.header');
 
 function getAllBooks() {
   return window.refreshBooks ? window.refreshBooks() : (window.BOOKS ?? []);
@@ -198,6 +199,10 @@ function activateTab(targetId) {
   tabButtons.forEach((item) => item.classList.toggle('active', item.dataset.tab === targetId));
   tabContents.forEach((section) => section.classList.toggle('active', section.id === targetId));
 
+  if (homeHero) {
+    homeHero.hidden = targetId !== 'catalog';
+  }
+
   const activeSection = document.getElementById(targetId);
   if (activeSection && activeSection.id === 'catalog') {
     renderSection(activeSection);
@@ -316,6 +321,10 @@ catalogSections.forEach((section) => {
   renderSection(section);
 });
 renderOrders();
+
+if (homeHero) {
+  homeHero.hidden = false;
+}
 
 function handleSharedDataUpdate(event) {
   const changedKey = event?.key ?? event?.detail?.key;
