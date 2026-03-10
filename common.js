@@ -408,6 +408,72 @@ function renderTopbarAccount() {
   });
 }
 
+function setupMobileMenu() {
+  document.querySelectorAll('.topbar').forEach((topbar) => {
+    const topbarInner = topbar.querySelector('.topbar-inner');
+    const topbarActions = topbar.querySelector('.topbar-actions');
+
+    if (!topbarInner || !topbarActions) {
+      return;
+    }
+
+    let toggleButton = topbar.querySelector('[data-mobile-menu-toggle]');
+    if (!toggleButton) {
+      toggleButton = document.createElement('button');
+      toggleButton.type = 'button';
+      toggleButton.className = 'mobile-menu-toggle';
+      toggleButton.setAttribute('data-mobile-menu-toggle', 'true');
+      toggleButton.setAttribute('aria-expanded', 'false');
+      toggleButton.setAttribute('aria-label', 'Відкрити меню');
+      toggleButton.innerHTML = '<span class="mobile-menu-toggle-icon">☰</span>';
+      topbarInner.insertBefore(toggleButton, topbarActions);
+    }
+
+    const closeMenu = () => {
+      topbar.classList.remove('menu-open');
+      toggleButton.setAttribute('aria-expanded', 'false');
+      toggleButton.setAttribute('aria-label', 'Відкрити меню');
+      const icon = toggleButton.querySelector('.mobile-menu-toggle-icon');
+      if (icon) {
+        icon.textContent = '☰';
+      }
+    };
+
+    const openMenu = () => {
+      topbar.classList.add('menu-open');
+      toggleButton.setAttribute('aria-expanded', 'true');
+      toggleButton.setAttribute('aria-label', 'Закрити меню');
+      const icon = toggleButton.querySelector('.mobile-menu-toggle-icon');
+      if (icon) {
+        icon.textContent = '✕';
+      }
+    };
+
+    toggleButton.onclick = () => {
+      if (topbar.classList.contains('menu-open')) {
+        closeMenu();
+        return;
+      }
+
+      openMenu();
+    };
+
+    topbarActions.querySelectorAll('a, button').forEach((element) => {
+      element.addEventListener('click', () => {
+        if (window.innerWidth <= 820) {
+          closeMenu();
+        }
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 820) {
+        closeMenu();
+      }
+    });
+  });
+}
+
 function initTopbarAccount() {
   document.querySelectorAll('[data-logout-button]').forEach((button) => {
     button.addEventListener('click', () => {
@@ -416,6 +482,7 @@ function initTopbarAccount() {
     });
   });
 
+  setupMobileMenu();
   renderTopbarAccount();
 }
 
