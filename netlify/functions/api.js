@@ -1,4 +1,4 @@
-const { getStore } = require('@netlify/blobs');
+const { connectLambda, getStore } = require('@netlify/blobs');
 
 const INITIAL_STATE = {
   users: [
@@ -27,7 +27,7 @@ function json(statusCode, payload) {
 }
 
 async function getDb() {
-  const store = getStore({ name: 'bookshelf-data', consistency: 'strong' });
+  const store = getStore('bookshelf-data');
   const existing = await store.get('db', { type: 'json' });
 
   if (existing) {
@@ -70,6 +70,7 @@ function parseBody(event) {
 
 exports.handler = async (event) => {
   try {
+    connectLambda(event);
     const { store, db } = await getDb();
     const method = event.httpMethod;
     const routePath = String(event.path || '').replace(/^\/\.netlify\/functions\/api/, '').replace(/^\/api/, '') || '/';
